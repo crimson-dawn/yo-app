@@ -10,7 +10,6 @@
 angular.module('testApp')
   .controller('MapCtrl',['$scope', 'propertyBoundaries','leafletData', function ($scope, propertyBoundaries, leafletData) {
 
-    $scope.answer = propertyBoundaries.getBoundaries();
     angular.extend($scope, {
        center: {
             lat: -43.5152097,
