@@ -32,8 +32,12 @@ angular.module('testApp')
             L.geoJson(data.data).addTo(map);
         })
     }
-    propertyBoundaries.getBoundaries(-43.51520, 171.6178138)
-        .then(function(boundaries) {
-            setMapData(boundaries)
-        })
+    leafletData.getMap().then(function(map) {
+        map.on('click', function(e) {
+            console.log(e.latlng);
+            propertyBoundaries.getBoundaries(e.latlng.lat, e.latlng.lng).then(function(boundaries) {
+                setMapData(boundaries)
+            })
+        }) 
+    })
   }]);
