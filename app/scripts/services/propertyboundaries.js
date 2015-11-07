@@ -15,7 +15,7 @@ angular.module('testApp')
     // Public API here
     return {
       getBoundaries: function(lat, lng) {
-          return $http.get('http://localhost:3000', {params: {lat: lat, lng: lng}});
+          return $http.get('http://crimson-server-dev.elasticbeanstalk.com', {params: {lat: lat, lng: lng}});
       }
     };
   }]);
