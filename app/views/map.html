@@ -1,5 +1,12 @@
 <leaflet defaults="defaults" lf-center="center" height="480px" width="640px"></leaflet>
-<div ng-repeat="metric in metrics">
-        {{metric.name}}
-        {{metric.value}}
+<md-content>
+<md-list>
+<md-list-item class="md-2-line" ng-repeat="metric in metrics">
+<div class="md-list-item-text">
+    <h3>{{metric.name}}</h3>
+    <h4>{{metric.value}}</h4>
 </div>
+<md-divider ng-if="!$last"></md-divider>
+</md-list-item>
+</md-list>
+</md-content>
