@@ -31,15 +31,13 @@ angular.module('testApp')
             L.geoJson(data).addTo(map);
         })
     }
-    var sortMetricsByName = function(metrics) {
-        return metrics.sort(function(a,b){if(a.name == b.name){return 0}else if(a.name < b.name){return -1} else{return 1}})
-
-    }
     leafletData.getMap().then(function(map) {
         map.on('click', function(e) {
             propertyBoundaries.getBoundaries(e.latlng.lat, e.latlng.lng).then(function(res) {
                 setMapData(res.data.boundaries)
-                $scope.metrics = sortMetricsByName(res.data.metrics)
+                $scope.metrics = res.data.metrics
+                $scope.metrics.Rainfall = {name: "Mean Annual Total Rainfall (mm)", values: [938.4]}
+                $scope.metrics.Sunshine = {name: "Mean Annual Total Sunshine (hours)", values: [2028.3]}
             })
         }) 
     })
