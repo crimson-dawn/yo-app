@@ -33,9 +33,7 @@ angular.module('testApp')
     }
     leafletData.getMap().then(function(map) {
         map.on('click', function(e) {
-            console.log(e.latlng);
             propertyBoundaries.getBoundaries(e.latlng.lat, e.latlng.lng).then(function(res) {
-                console.log(res.data);
                 setMapData(res.data.boundaries)
                 $scope.metrics = res.data.metrics.sort(function(a,b){if(a.name == b.name){return 0}else if(a.name < b.name){return -1} else{return 1}})
             })

@@ -1,2 +1,5 @@
 <leaflet defaults="defaults" lf-center="center" height="480px" width="640px"></leaflet>
-{{metrics}}
+<div ng-repeat="metric in metrics">
+        {{metric.name}}
+        {{metric.value}}
+</div>
