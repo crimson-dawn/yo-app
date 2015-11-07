@@ -18,7 +18,8 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'ui-leaflet'
+    'ui-leaflet',
+    'ngMaterial'
   ])
   .config(function ($routeProvider) {
     $routeProvider
