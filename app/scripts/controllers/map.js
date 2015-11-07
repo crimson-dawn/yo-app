@@ -9,10 +9,6 @@
  */
 angular.module('testApp')
   .controller('MapCtrl',['$scope', 'propertyBoundaries','leafletData', function ($scope, propertyBoundaries, leafletData) {
-    leafletData.getMap().then(function(map) {
-        //L.geoJson(b).addTo(map);
-        console.log(b);
-    });
 
     $scope.answer = propertyBoundaries.getBoundaries();
     angular.extend($scope, {
@@ -31,8 +27,14 @@ angular.module('testApp')
             }
         }
     });
+    var setMapData = function(data) {
+        console.log(data.data)
+        leafletData.getMap().then(function(map) {
+            L.geoJson(data.data).addTo(map);
+        })
+    }
     propertyBoundaries.getBoundaries(-43.51520, 171.6178138)
         .then(function(boundaries) {
-            leafletData.setMapData(boundaries)
+            setMapData(boundaries)
         })
   }]);
