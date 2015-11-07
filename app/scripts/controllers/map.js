@@ -8,11 +8,17 @@
  * Controller of the testApp
  */
 angular.module('testApp')
-  .controller('MapCtrl', ['$scope', function ($scope) {
+  .controller('MapCtrl',['$scope', 'propertyBoundaries','leafletData', function ($scope, propertyBoundaries, leafletData) {
 
+    leafletData.getMap().then(function(map) {
+        var b = propertyBoundaries.getBoundaries();
+        L.geoJson(b).addTo(map);
+        console.log(b);
+    });
+
+    $scope.answer = propertyBoundaries.getBoundaries();
     angular.extend($scope, {
-
-        center: {
+       center: {
             lat: -43.5152097,
             lng: 171.6178138,
             zoom: 13
@@ -23,7 +29,7 @@ angular.module('testApp')
             path: {
                 weight: 10,
                 color: '#800000',
-                opacity: 1
+                opacity: 0.5
             }
         }
     });
